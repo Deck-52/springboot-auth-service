@@ -22,4 +22,10 @@ public class UserController {
     public String login(@RequestBody LoginRequest request) {
     return userService.loginUser(request);
     }
+
+    @GetMapping("/profile")
+    public String profile() {
+        return "Protected Profile Access";
+    }
+
 }
