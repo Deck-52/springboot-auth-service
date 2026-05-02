@@ -4,6 +4,7 @@ import com.auth.authservice.entity.User;
 import com.auth.authservice.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import com.auth.authservice.dto.LoginRequest;
 
 @RestController
 @RequestMapping("/auth")
@@ -15,5 +16,10 @@ public class UserController {
     @PostMapping("/register")
     public User register(@RequestBody User user) {
         return userService.registerUser(user);
+    }
+
+    @PostMapping("/login")
+    public String login(@RequestBody LoginRequest request) {
+    return userService.loginUser(request);
     }
 }
