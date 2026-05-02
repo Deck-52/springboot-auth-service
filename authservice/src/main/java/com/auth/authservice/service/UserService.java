@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import com.auth.authservice.security.JwtService;
+import com.auth.authservice.enums.Role;
 import java.util.Optional;
 
 @Service
@@ -24,7 +25,7 @@ public class UserService {
     public User registerUser(User user) {
 
         user.setPassword(passwordEncoder.encode(user.getPassword()));
-
+        user.setRole(Role.USER);
         return userRepository.save(user);
     }
 

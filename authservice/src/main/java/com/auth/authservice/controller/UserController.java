@@ -28,4 +28,9 @@ public class UserController {
         return "Protected Profile Access";
     }
 
+    @GetMapping("/admin")
+    public String adminAccess() {
+        return "Admin Access Granted";
+    }
+
 }

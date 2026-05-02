@@ -1,10 +1,13 @@
 package com.auth.authservice.entity;
 
 import jakarta.persistence.*;
+import com.auth.authservice.enums.Role;
 
 @Entity
 @Table(name = "users")
 public class User {
+
+    
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -15,6 +18,17 @@ public class User {
     private String email;
 
     private String password;
+
+    @Enumerated(EnumType.STRING)
+    private Role role;
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
 
     public User() {}
 
