@@ -6,7 +6,7 @@ import com.auth.authservice.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-
+import com.auth.authservice.security.JwtService;
 import java.util.Optional;
 
 @Service
@@ -14,6 +14,9 @@ public class UserService {
 
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private JwtService jwtService;
 
     @Autowired
     private PasswordEncoder passwordEncoder;
@@ -41,7 +44,7 @@ public class UserService {
         );
 
         if (matches) {
-            return "Login successful";
+            return jwtService.generateToken(user.getEmail());
         }
 
         return "Invalid password";
